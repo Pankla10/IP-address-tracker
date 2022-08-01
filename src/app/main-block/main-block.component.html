@@ -1,0 +1,8 @@
+<app-form (responseEvent)="setValue($event)"></app-form>
+<div ngClass="info">
+    <p>IP: {{ip}}</p>
+    <p>Location: {{city}}, {{region}}</p>
+    <p>Timezone: {{timezone}}</p>
+    <p>ISP: {{isp}}</p>
+</div>
+<app-map></app-map>

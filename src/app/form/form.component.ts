@@ -1,0 +1,45 @@
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import {IpGeolocationService} from '../services/ip-geolocation.service' 
+
+@Component({
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.css']
+})
+export class FormComponent implements OnInit {
+  @Output() responseEvent = new EventEmitter<any>();
+  lat: number = 0;
+  lng: number = 0;
+
+  constructor(public ipGeolocationService:IpGeolocationService) { }
+
+  ngOnInit(): void {
+  }
+  
+  ipSearch = new FormGroup({
+    ip: new FormControl(''),
+    submit: new FormControl('submit')
+  })
+
+  onSubmit(){
+    //this.response.emit(this.ipGeolocationService.ipGeolocation(this.ipSearch.value.ip))
+   /* this.ipGeolocationService.ipGeolocation(this.ipSearch.value.ip).subscribe({
+      next: (response) =>
+      this.response.emit(response),
+      next: response =>
+      this.response1 = response
+    })*/
+
+    this.ipGeolocationService.ipGeolocation(this.ipSearch.value.ip).subscribe(response => {
+      this.responseEvent.emit(response),
+      this.lat = response.location.lat,
+      this.lng = response.location.lng,
+      this.ipGeolocationService.sendFunction(this.lat, this.lng)
+      //console.log(this.responseVariable)
+    })
+
+   ;
+  }
+
+}

@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "http://geo.ipify.org/api/v2/country",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
