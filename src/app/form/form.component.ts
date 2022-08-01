@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {IpGeolocationService} from '../services/ip-geolocation.service' 
 
 @Component({
@@ -18,7 +18,7 @@ export class FormComponent implements OnInit {
   }
   
   ipSearch = new FormGroup({
-    ip: new FormControl(''),
+    ip: new FormControl('', [Validators.required,Validators.maxLength(15),Validators.pattern('(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)')]),
     submit: new FormControl('submit')
   })
 
@@ -30,16 +30,16 @@ export class FormComponent implements OnInit {
       next: response =>
       this.response1 = response
     })*/
-
-    this.ipGeolocationService.ipGeolocation(this.ipSearch.value.ip).subscribe(response => {
-      this.responseEvent.emit(response),
-      this.lat = response.location.lat,
-      this.lng = response.location.lng,
-      this.ipGeolocationService.sendFunction(this.lat, this.lng)
-      //console.log(this.responseVariable)
-    })
-
-   ;
+    if(this.ipSearch.valid){
+      this.ipGeolocationService.ipGeolocation(this.ipSearch.value.ip).subscribe(response => {
+        console.log(response);
+        this.responseEvent.emit(response),
+        this.lat = response.location.lat,
+        this.lng = response.location.lng,
+        this.ipGeolocationService.sendFunction(this.lat, this.lng)
+        //console.log(this.responseVariable)
+      })
+    };
   }
 
 }

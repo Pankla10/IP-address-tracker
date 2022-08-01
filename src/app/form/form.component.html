@@ -2,3 +2,9 @@
     <input type="text" formControlName="ip" id="ip" placeholder="Search any IP address">
     <input type="submit" formControlName="submit">
 </form>
+<div *ngIf="ipSearch.get('ip')?.hasError('required') && ipSearch.get('ip')?.touched && ipSearch.get('ip')?.dirty">Ip
+    is required</div>
+<div *ngIf="ipSearch.get('ip')?.hasError('maxlength') && ipSearch.get('ip')?.touched && ipSearch.get('ip')?.dirty">Ip is
+    too long</div>
+<div *ngIf="ipSearch.get('ip')?.hasError('pattern') && ipSearch.get('ip')?.touched && ipSearch.get('ip')?.dirty">Ip is
+    not valid</div>
