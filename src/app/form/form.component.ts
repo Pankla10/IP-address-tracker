@@ -19,7 +19,7 @@ export class FormComponent implements OnInit {
   
   ipSearch = new FormGroup({
     ip: new FormControl('', [Validators.required,Validators.maxLength(15),Validators.pattern('(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)')]),
-    submit: new FormControl('submit')
+    submit: new FormControl('search')
   })
 
   onSubmit(){

@@ -1,10 +1,13 @@
 <form [formGroup]="ipSearch" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="ip" id="ip" placeholder="Search any IP address">
-    <input type="submit" formControlName="submit">
+    <input type="text" formControlName="ip" id="ip" placeholder="Search any IP address" ngClass="ipInput">
+    <input type="submit" formControlName="submit" ngClass="submit">
 </form>
-<div *ngIf="ipSearch.get('ip')?.hasError('required') && ipSearch.get('ip')?.touched && ipSearch.get('ip')?.dirty">Ip
+<div *ngIf="ipSearch.get('ip')?.hasError('required') && ipSearch.get('ip')?.touched && ipSearch.get('ip')?.dirty"
+    ngClass="error">Ip
     is required</div>
-<div *ngIf="ipSearch.get('ip')?.hasError('maxlength') && ipSearch.get('ip')?.touched && ipSearch.get('ip')?.dirty">Ip is
+<div *ngIf="ipSearch.get('ip')?.hasError('maxlength') && ipSearch.get('ip')?.touched && ipSearch.get('ip')?.dirty"
+    ngClass="error">Ip is
     too long</div>
-<div *ngIf="ipSearch.get('ip')?.hasError('pattern') && ipSearch.get('ip')?.touched && ipSearch.get('ip')?.dirty">Ip is
+<div *ngIf="ipSearch.get('ip')?.hasError('pattern') && ipSearch.get('ip')?.touched && ipSearch.get('ip')?.dirty"
+    ngClass="error">Ip is
     not valid</div>

@@ -1,8 +1,10 @@
+<h1 ngClass="titleSite">IP address tracker</h1>
 <app-form (responseEvent)="setValue($event)"></app-form>
 <div ngClass="info">
-    <p>IP: {{ip}}</p>
-    <p>Location: {{city}}, {{region}}</p>
-    <p>Timezone: {{timezone}}</p>
-    <p>ISP: {{isp}}</p>
+    <p><span ngClass="titleTable">IP:</span><br> <span ngClass="contentTable">{{ip}}</span></p>
+    <p><span ngClass="titleTable">Location:</span><br> <span ngClass="contentTable">{{city}}<span
+                *ngIf="region != undefined">,</span> {{region}}</span></p>
+    <p><span ngClass="titleTable">Timezone:</span><br> <span ngClass="contentTable">{{timezone}}</span></p>
+    <p><span ngClass="titleTable">ISP:</span><br> <span ngClass="contentTable">{{isp}}</span></p>
 </div>
 <app-map></app-map>
