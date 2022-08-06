@@ -3,8 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    height: 100%;
+    width: 100vw;
+}
 body{
+    height: 100%;
+    width: 100vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     overflow: hidden;
     background-image: linear-gradient(90deg, rgba(89, 131, 252, 1) 0%, rgba(41, 53, 86, 1) 100%);
+}
+.leaflet-shadow-pane{
+    display: none;
 }

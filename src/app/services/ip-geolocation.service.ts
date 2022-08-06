@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class IpGeolocationService {
   lat: number = 0;
   lng: number = 0;
+  city: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -19,9 +20,10 @@ export class IpGeolocationService {
 
   }
 
-  sendFunction(latParam: number, lngParam: number){
+  sendFunction(latParam: number, lngParam: number, cityParam: string){
     this.lat = latParam;
     this.lng = lngParam;
+    this.city = cityParam;
     this.subject.next();
   }
 

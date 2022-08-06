@@ -11,6 +11,7 @@ export class FormComponent implements OnInit {
   @Output() responseEvent = new EventEmitter<any>();
   lat: number = 0;
   lng: number = 0;
+  city: string = '';
 
   constructor(public ipGeolocationService:IpGeolocationService) { }
 
@@ -36,7 +37,8 @@ export class FormComponent implements OnInit {
         this.responseEvent.emit(response),
         this.lat = response.location.lat,
         this.lng = response.location.lng,
-        this.ipGeolocationService.sendFunction(this.lat, this.lng)
+        this.city = response.location.city,
+        this.ipGeolocationService.sendFunction(this.lat, this.lng, this.city)
         //console.log(this.responseVariable)
       })
     };

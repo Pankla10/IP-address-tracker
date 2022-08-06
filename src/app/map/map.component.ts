@@ -26,7 +26,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
   
-    this.map = L.map('map').setView([51.505, -0.09], 13);
+    this.map = L.map('map').setView([51.505, -0.09], 3);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
@@ -47,6 +47,10 @@ console.log(this.map)
     maxZoom: 19,
     attribution: '© OpenStreetMap'
 }).addTo(this.map);
+
+var marker = L.marker([this.lat, this.lng],
+  {alt: 'Searched place'}).addTo(this.map)
+  .bindPopup(this.ipGeolocationService.city);
   }
   
 
