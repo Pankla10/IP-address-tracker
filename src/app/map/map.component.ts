@@ -13,6 +13,9 @@ export class MapComponent implements OnInit {
   //@Input() lng: any;
   lat: any = 51.505;
   lng: any = -0.09
+  mapOptions = {
+    zoomControl: false
+  }
   constructor(private ipGeolocationService:IpGeolocationService) { 
     this.ipGeolocationService.getFunction().subscribe(() => {
       this.lat = ipGeolocationService.lat;
@@ -25,12 +28,12 @@ export class MapComponent implements OnInit {
   map: any = {};
 
   ngOnInit(): void {
-  
-    this.map = L.map('map').setView([51.505, -0.09], 3);
+    this.map = L.map('map', this.mapOptions).setView([51.505, -0.09], 3)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
 }).addTo(this.map);
+
 console.log(this.map)
   }
   
@@ -42,7 +45,7 @@ console.log(this.map)
       //this.map.currentTarget.remove();
     this.map.remove();
     
-    this.map = L.map('map').setView([this.lat, this.lng], 13);
+    this.map = L.map('map', this.mapOptions).setView([this.lat, this.lng], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
