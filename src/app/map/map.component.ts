@@ -12,7 +12,8 @@ export class MapComponent implements OnInit {
   //@Input() lat: any;
   //@Input() lng: any;
   lat: any = 51.505;
-  lng: any = -0.09
+  lng: any = -0.09;
+  scrollY: number = window.scrollY;
   mapOptions = {
     zoomControl: false
   }
@@ -21,6 +22,10 @@ export class MapComponent implements OnInit {
       this.lat = ipGeolocationService.lat;
       this.lng = ipGeolocationService.lng;
       this.updateMap();
+    })
+    document.addEventListener('scroll',()=>{
+      this.scrollY = window.scrollY;
+      console.log(this.scrollY)
     })
   }
 
@@ -45,7 +50,7 @@ console.log(this.map)
       //this.map.currentTarget.remove();
     this.map.remove();
     
-    this.map = L.map('map', this.mapOptions).setView([this.lat, this.lng], 13);
+    this.map = L.map('map', this.mapOptions).setView([this.lat, this.lng], 10);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
@@ -56,5 +61,12 @@ var marker = L.marker([this.lat, this.lng],
   .bindPopup(this.ipGeolocationService.city);
   }
   
+  backToTop(){
+    window.scrollTo({
+      top: 0,
+    behavior: "smooth"
+    })
+    //document.documentElement.scrollTop = 0;
+  }
 
 }

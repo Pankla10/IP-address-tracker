@@ -16,6 +16,8 @@
     height: 100px;
     background-color: white;
     border-radius:10px ;
+    align-items: flex-start;
+    padding: 20px;
 }
 .titleTable{
     font-size: 15px;
@@ -24,4 +26,70 @@
 .contentTable{
     font-weight: 700;
     font-size: 20px;
+}
+p{
+    white-space: normal; 
+    max-width: 25%;
+}
+
+@media (max-width: 1025px){
+    .info{
+        width: 750px;
+    }
+    .contentTable{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 800px) and (orientation:landscape){
+    .info{
+        width: 650px;
+    }
+}
+@media (max-width: 700px) and (orientation:landscape){
+    .info{
+        width: 550px;
+    }
+}
+
+@media (max-width: 600px) and (orientation:portrait){
+    .info{
+        width: 500px; 
+    }
+    .titleTable{
+        font-size: 13px;
+    }
+    .contentTable{
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 450px) and (orientation:portrait){
+    .info{
+        width: 375px; 
+        padding: 10px;
+        flex-wrap: wrap;
+        height: 150px;
+    }
+    p{
+        min-width: 50%;
+    }
+}
+
+@media (max-width: 400px) and (orientation:portrait){
+    .info{
+        width: 350px;
+    }
+}
+
+@media (max-width: 300px) and (orientation:portrait){
+    .info{
+        width: 250px;
+    }
+    .titleTable{
+        font-size: 11px;
+    }
+    .contentTable{
+        font-size: 11px;
+    }
 }

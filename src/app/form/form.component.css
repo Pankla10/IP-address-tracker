@@ -18,7 +18,7 @@ form{
     border-bottom-right-radius: 10px;
     border-top-right-radius:10px;
     width: 80px;
-    font-size: 16px;
+    font-size: 20px;
     color: white;
     background-color: black;
     transition: .3s;
@@ -36,3 +36,33 @@ form{
     width: 300px;
     margin-top: 40px;
 }
+
+@media (max-width: 1025px){
+.submit:hover{
+    color: white;
+}
+}
+
+@media (max-width: 600px) and (orientation:portrait){
+    .ipInput{
+        width: 350px;
+    }
+}
+
+@media (max-width: 450px) and (orientation:portrait){
+    .ipInput{
+        width: 250px;
+    }
+}
+
+@media (max-width: 300px) and (orientation:portrait){
+    .ipInput{
+        width: 150px;
+    }
+}
+@media (max-width: 700px) and (orientation:landscape){
+    .ipInput{
+        width: 375px;
+    }
+}
+

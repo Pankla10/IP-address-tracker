@@ -1,4 +1,36 @@
 #map{
     height: 800px;
     width: 100vw;
+    position: relative;
+    z-index: 1;
 }
+.hidden{
+    display: none;
+}
+.visable{
+    display: inline-block;
+}
+.scroll{
+    position: fixed;
+    bottom:10px;
+    left:10px;
+    z-index: 2;
+    /*display: none;*/
+}
+@media (min-height: 1025px) and (orientation:portrait){
+    #map{
+        height: 1100px;
+    }
+}
+
+/*@media (max-width: 600px) and (orientation:portrait){
+    .scroll{
+        display: inline-block;
+    }
+}
+
+@media (max-height: 800px) and (orientation:landscape){
+    .scroll{
+        display: inline-block;
+    }
+}*/
