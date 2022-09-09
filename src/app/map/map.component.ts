@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 //import * as L from 'node_modules/leaflet/dist';
 import * as L from 'leaflet'
+//import markerIconPng from "leaflet/dist/images/markerIconPng";
 import {IpGeolocationService} from '../services/ip-geolocation.service' 
 
 @Component({
@@ -9,8 +10,6 @@ import {IpGeolocationService} from '../services/ip-geolocation.service'
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  //@Input() lat: any;
-  //@Input() lng: any;
   lat: any = 51.505;
   lng: any = -0.09;
   scrollY: number = window.scrollY;
@@ -25,7 +24,6 @@ export class MapComponent implements OnInit {
     })
     document.addEventListener('scroll',()=>{
       this.scrollY = window.scrollY;
-      console.log(this.scrollY)
     })
   }
 
@@ -39,15 +37,9 @@ export class MapComponent implements OnInit {
     attribution: '© OpenStreetMap'
 }).addTo(this.map);
 
-console.log(this.map)
   }
   
   updateMap(){
-    
-    //console.log(this.lat)
-    //console.log(this.lng)
-    //console.log(this.LAT);
-      //this.map.currentTarget.remove();
     this.map.remove();
     
     this.map = L.map('map', this.mapOptions).setView([this.lat, this.lng], 10);
@@ -56,8 +48,12 @@ console.log(this.map)
     attribution: '© OpenStreetMap'
 }).addTo(this.map);
 
+const myIcon = L.icon({
+  iconUrl: "../assets/marker-icon.png"
+})
+
 var marker = L.marker([this.lat, this.lng],
-  {alt: 'Searched place'}).addTo(this.map)
+  {alt: 'Searched place', icon: myIcon}).addTo(this.map)
   .bindPopup(this.ipGeolocationService.city);
   }
   
@@ -66,7 +62,6 @@ var marker = L.marker([this.lat, this.lng],
       top: 0,
     behavior: "smooth"
     })
-    //document.documentElement.scrollTop = 0;
   }
 
 }

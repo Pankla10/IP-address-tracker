@@ -24,22 +24,13 @@ export class FormComponent implements OnInit {
   })
 
   onSubmit(){
-    //this.response.emit(this.ipGeolocationService.ipGeolocation(this.ipSearch.value.ip))
-   /* this.ipGeolocationService.ipGeolocation(this.ipSearch.value.ip).subscribe({
-      next: (response) =>
-      this.response.emit(response),
-      next: response =>
-      this.response1 = response
-    })*/
     if(this.ipSearch.valid){
       this.ipGeolocationService.ipGeolocation(this.ipSearch.value.ip).subscribe(response => {
-        console.log(response);
         this.responseEvent.emit(response),
         this.lat = response.location.lat,
         this.lng = response.location.lng,
         this.city = response.location.city,
         this.ipGeolocationService.sendFunction(this.lat, this.lng, this.city)
-        //console.log(this.responseVariable)
       })
     };
   }

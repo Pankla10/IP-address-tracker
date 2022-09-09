@@ -12,8 +12,6 @@ export class MainBlockComponent implements OnInit {
   region?: string;
   timezone?: string;
   isp?: string;
- // lat?: number;
- // lng?: number;
 
   constructor() { }
 
@@ -21,16 +19,11 @@ export class MainBlockComponent implements OnInit {
   }
 
   setValue(response: any){
-    //this.lat = response.location.lat;
-   //this.lng = response.location.lng;
-    console.log(response)
    this.ip = response.ip;
    this.city = response.location.city;
    this.region = response.location.region;
    this.timezone = response.location.timezone;
    this.isp = response.isp;
-   console.log(this.ip)
-   console.log(this.city)
   }
 
 }
