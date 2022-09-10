@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 //import * as L from 'node_modules/leaflet/dist';
 import * as L from 'leaflet'
-//import markerIconPng from "leaflet/dist/images/markerIconPng";
 import {IpGeolocationService} from '../services/ip-geolocation.service' 
 
 @Component({
@@ -49,7 +48,7 @@ export class MapComponent implements OnInit {
 }).addTo(this.map);
 
 const myIcon = L.icon({
-  iconUrl: "../assets/marker-icon.png"
+  iconUrl: "assets/marker-icon.png"
 })
 
 var marker = L.marker([this.lat, this.lng],

@@ -30,7 +30,7 @@ export class FormComponent implements OnInit {
         this.lat = response.location.lat,
         this.lng = response.location.lng,
         this.city = response.location.city,
-        this.ipGeolocationService.sendFunction(this.lat, this.lng, this.city)
+        this.ipGeolocationService.sendFunction(this.lat, this.lng, this.city);
       })
     };
   }
