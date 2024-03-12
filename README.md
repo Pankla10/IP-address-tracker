@@ -18,4 +18,4 @@ This website is used to display information about ip like ISP, timezone and loca
 
 ## Demo
 
-Link: https://pankla10.github.io/ip-address-tracker-master/
+Link: https://dbfdvf.github.io/ip-address-tracker-master/
